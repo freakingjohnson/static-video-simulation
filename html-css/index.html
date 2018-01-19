@@ -16,6 +16,34 @@
 </head>
 
 <body>
+    <script>
+
+
+
+        function randomVid() {
+            const modal = document.getElementById('myModal')
+            const btn = document.getElementById('button')
+            const span = document.getElementsByClassName("close")[0]
+            const vidArr = ["./assets/kittens-puppies.mp4", "./assets/vid1.mp4", "./assets/vid2.mp4", "./assets/vid3.mp4", "./assets/vid4.mp4"]
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            let newVid = ''
+            modal.style.display = "block"
+            for (i = 0; i < 1; i++) {
+                var x = Math.round(Math.random() * vidArr.length - 1)
+                var y = vidArr[x]
+                newVid += y
+            }
+            console.log('hi', x)
+            document.getElementById('random-video').src = newVid
+        } 
+    </script>
     <noscript>
         You need to enable JavaScript to run this app.
     </noscript>
@@ -43,11 +71,36 @@
                 <video width=700 height=400 src="./assets/vid4.mp4" controls=true />
             </div>
         </div>
-        <h1 class='footer'>
-            <button>
+        <div class="lists">
+            <ol "ordered-list">
+                <li>
+                    hey
+                </li>
+                <li>
+                    hello
+                </li>
+                <li>
+                    hi
+                </li>
+                <li>
+                    <a href=https://www.lingscars.com>linky ling link</a>
+                </li>
+            </ol>
+        </div>
+
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <video width=700 height=400 id="random-video" autoplay=true controls=true/>
+            </div>
+
+        </div>
+        <footer class='footer'>
+            <button id='button' onclick="randomVid()">
                 random thing
             </button>
-        </h1>
+        </footer>
     </div>
 </body>
 
