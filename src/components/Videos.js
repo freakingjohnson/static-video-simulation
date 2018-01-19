@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactPlayer from 'react-player'
 import kittens from '../assets/kittens-puppies.mp4'
 import vid1 from '../assets/vid1.mp4'
 import vid2 from '../assets/vid2.mp4'
@@ -12,7 +11,12 @@ const vidArr = [kittens, vid1, vid2, vid3, vid4]
 const Videos = () => {
     const vidMap = vidArr.map(v => (
         <div className='flex-child' key={v}>
-            <ReactPlayer url={v} controls={true} />
+            <video
+                width={600}
+                height={400}
+                src={v}
+                controls={true}
+            />
         </div>
     ))
     console.log(vidMap)

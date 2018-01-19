@@ -14,6 +14,11 @@ class App extends Component {
             <Videos />
           </div>
         </div>
+        <h1 className='footer'>
+          <button>
+            random thing
+          </button>
+        </h1>
       </div>
     );
   }
