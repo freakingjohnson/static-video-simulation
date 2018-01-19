@@ -1,0 +1,12 @@
+.container{
+    padding-top: 60px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex-child{
+    margin: auto;
+    padding: 10px;
+}

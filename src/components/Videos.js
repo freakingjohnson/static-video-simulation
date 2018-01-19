@@ -19,7 +19,6 @@ const Videos = () => {
             />
         </div>
     ))
-    console.log(vidMap)
 
     return (
         <div className='container'>
