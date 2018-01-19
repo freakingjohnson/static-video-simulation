@@ -3,14 +3,22 @@ const express = require('express')
     , bodyParser = require('body-parser')
     , cors = require('cors')
     , session = require('express-session')
+    , massive = require('massive')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
-    , massive = require('massive')
     , cloudinary = require('cloudinary')
+    , controller = require('./controllers')
+
 
 const app = express()
+
 app.use(cors())
+
 app.use(bodyParser.json())
+
+massive(process.env.DB_CONNECTION).then((db)=>{
+    app.set('db', db)
+})
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -25,6 +33,7 @@ app.use(session({
 }))
 app.use(express.static(__dirname + '/../build'))
 
-
+app.post('/api/postcards', controller.postCards)
+app.get('/api/getcards', controller.getCards)
 
 app.listen(process.env.SERVER_PORT, () => { console.log('(0)_(0)') })

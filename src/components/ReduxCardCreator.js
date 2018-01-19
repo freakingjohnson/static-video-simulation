@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField'
@@ -18,7 +18,7 @@ for (let i = 1; i < 6; i++) {
     howManyArray.push(<MenuItem value={i} key={i} primaryText={i} />);
 }
 
-export class CardCreator extends Component {
+export class CardCreator extends React.Component {
 
     render() {
         const {

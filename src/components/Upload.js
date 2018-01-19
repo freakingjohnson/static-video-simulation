@@ -3,7 +3,7 @@ import axios from 'axios';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dropzone from 'react-dropzone'
 import { connect } from "react-redux"
-import { handlePicture } from '../ducks/cardReducer';
+import reducer, { handlePicture } from '../ducks/cardReducer';
 
 class Upload extends Component {
     constructor(props) {
@@ -51,8 +51,28 @@ class Upload extends Component {
                     fileURL: fileURL
                 })
                 console.log(data);
+
+            }).catch((error) => {
+                console.log(error)
             })
         });
+    }
+
+    handlePost = (event) => {
+        return axios.post('/api/postcards', {
+            card_name: this.props.name,
+            card_desc: this.props.description,
+            card_type: this.props.cardType,
+            item_type: this.props.item_type,
+            card_level: this.props.level,
+            bad_stuff: this.props.badStuff,
+            how_many: this.props.howMany,
+            picture_url: this.state.fileURL
+        }).then((res) => {
+            console.log(res)
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
     render() {
@@ -63,6 +83,7 @@ class Upload extends Component {
             handlePicture
         } = this.props
         console.log(file)
+        console.log(this.props.name)
         const onDropAccepted = function (file) { setTimeout(() => handlePicture(file), 0) }
         return (
             <div className="Uploader">
@@ -80,6 +101,12 @@ class Upload extends Component {
                     label="upload image"
                     onClick={this.handleUpload}
                     disabled={!file ? true : false}
+                />
+                <RaisedButton
+                    primary={true}
+                    label="post card"
+                    onClick={this.handlePost}
+                    disabled={!this.state.fileURL ? true : false}
                 />
             </div >
 
