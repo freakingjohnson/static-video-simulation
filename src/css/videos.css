@@ -1,8 +1,10 @@
 .container{
+    padding-top: 60px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 .flex-child{
     margin: auto;
+    padding: 10px;
 }
