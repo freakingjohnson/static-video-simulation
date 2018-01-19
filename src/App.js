@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
-import Videos from './components/Videos';
-import './css/app.css'
+import ReduxCardCreator from './components/ReduxCardCreator'
+// import Uploader from './components/Upload'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="app">
-        <h1 className="header">
-          sup
-        </h1>
-        <div>
-          <div>
-            <Videos />
-          </div>
-        </div>
-        <h1 className='footer'>
-          <button>
-            random thing
-          </button>
-        </h1>
+      <MuiThemeProvider>
+      <div>
+
+        <ReduxCardCreator/>
       </div>
+      </MuiThemeProvider>
     );
   }
 }
